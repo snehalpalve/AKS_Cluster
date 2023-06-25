@@ -1,17 +1,3 @@
-terraform {
-  required_version = ">=1.3"
-  required_providers {
-    azurerm = {
-        source = "hashicorp/azurerm"
-        version = ">=3.0"
-    }
-    azuread = {
-        source = "hashicorp/azuread"
-        version = ">=2.0"
-    }
-    random = {
-        source = "hashicorp/ramdom"
-        version = ">=3.0"
-    }
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7a99b832dd0eaae4de521b278c3f11dc933d6b310d3a5ae0643fe0d6f65c36e5
+size 460
