@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
 - script: echo 'Running Terraform from the custom path...'
   displayName: 'Run Terraform'
@@ -19,6 +20,9 @@ steps:
   name: publickey
   inputs:
     secureFile: 'id_rsa.pub'
+  
+- bash: ls $(terraform-working-directory)
+
 - task: TerraformCLI@0
   inputs:
     command: 'init'
