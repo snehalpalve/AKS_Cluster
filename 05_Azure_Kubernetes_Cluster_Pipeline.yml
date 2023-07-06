@@ -13,8 +13,6 @@ pool:
 steps:
 - script: echo 'Running Terraform from the custom path...'
   displayName: 'Run Terraform'
-  env:
-    PATH: '/usr/local/bin/terraform:$(PATH)'
 
 - task: DownloadSecureFile@1
   name: publickey
