@@ -11,6 +11,8 @@ pool:
 
 steps:
 - script: echo Kubernetes Cluster
+  env:
+    PATH: '/usr/local/bin/terraform:$(PATH)'
 
 - task: DownloadSecureFile@1
   name: publickey
