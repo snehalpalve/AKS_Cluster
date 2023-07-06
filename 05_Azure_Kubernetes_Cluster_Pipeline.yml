@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Kubernetes Cluster pipeline'
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    backendType: 'azurerm'
+    backendServiceArm: 'ARM_Connection'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'Snehal_RG_TF_file'
+    backendAzureRmResourceGroupLocation: 'Central US'
+    backendAzureRmStorageAccountName: 'storageaccountfortffile'
+    backendAzureRmContainerName: 'tfstatefiles'
+    backendAzureRmKey: 'kubernetes-dev.tfstate'
+    allowTelemetryCollection: true
