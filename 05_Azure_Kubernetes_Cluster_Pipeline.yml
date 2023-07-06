@@ -10,17 +10,24 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Kubernetes Cluster pipeline'
+- script: echo Kubernetes Cluster
+
+- task: DownloadSecureFile@1
+  name: publickey
+  inputs:
+    secureFile: 'id_rsa.pub'
 - task: TerraformCLI@0
   inputs:
     command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath) '
     backendType: 'azurerm'
     backendServiceArm: 'ARM_Connection'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'Snehal_RG_TF_file'
     backendAzureRmResourceGroupLocation: 'Central US'
-    backendAzureRmStorageAccountName: 'storageaccountfortffile'
+    backendAzureRmStorageAccountName: 'storageaccountfortffilepipeline'
     backendAzureRmContainerName: 'tfstatefiles'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
     allowTelemetryCollection: true
+  displayName: 'Kubernetes Cluster pipeline'
