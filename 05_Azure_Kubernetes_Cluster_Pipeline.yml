@@ -29,7 +29,7 @@ steps:
     backendType: 'azurerm'
     backendServiceArm: 'ARM_Connection'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'Snehal_RG_TF_file'
+    backendAzureRmResourceGroupName: 'Snehal_RG_TF_file_by_pipeline'
     backendAzureRmResourceGroupLocation: 'Central US'
     backendAzureRmStorageAccountName: 'storageaccountfortffilepipeline'
     backendAzureRmContainerName: 'tfstatefiles'
